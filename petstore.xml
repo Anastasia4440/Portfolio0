@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PetStore>
+  <Pets>
+    <pet id="1">
+      <name>Chichi</name>
+      <type>dog</type>
+    </pet>
+      <pet id="2">
+      <name>Cooper</name>
+      <type>dog</type>
+    </pet>
+     <pet id="3">
+      <name>Bella</name>
+      <type>cat</type>
+    </pet>
+      <pet id="4">
+      <name>Milo</name>
+      <type>hamster</type>
+    </pet>
+    </Pets>
+    <Toys>
+      <collar/>
+      <bone type="chicken"/>
+      <ball/>
+      <chew_toy/>
+      <catnip_toy/>
+    </Toys>
+</PetStore>
