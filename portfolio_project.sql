@@ -1,0 +1,44 @@
+create table db1.users(
+id int auto_increment primary key,
+name varchar(45) not null,
+email varchar(45) not null unique,
+city varchar(45),
+status varchar(20)
+) 
+INSERT INTO db1.users(name, email, city, status) VALUES 
+('Anna', 'anna@example.com', 'Kyiv', 'active'),
+('Bohdan', 'bohdan@example.com', 'Lviv', 'inactive'),
+('Kateryna', 'katya@example.com', 'Kyiv', 'active'),
+('Oleh', 'oleh@example.com', 'Odessa', 'active'),
+('Maria', 'maria@example.com', 'Lviv', 'inactive');
+
+select * from db1.users;
+
+set SQL_SAFE_UPDATES = 0;
+
+update db1.users set city = 'Odesa' where city = 'Odessa';
+
+create table db1.orders(
+id int auto_increment primary key,
+user_id int,
+total int,
+foreign key (user_id) references db1.users(id)
+)
+insert into db1.orders(user_id, total) values
+(1, 250),
+(1, 300),
+(3, 150),
+(4, 500),
+(2, 100);
+
+select * from db1.orders;
+
+select * from db1.orders order by total desc;
+
+select user_id, sum(total) from db1.orders group by user_id;
+
+select * from db1.users left join db1.orders on users.id = orders.user_id;
+
+select * from db1.users where email is null;
+
+select name from db1.users left join db1.orders on users.id = orders.user_id where total > (select avg(total) from db1.orders);
